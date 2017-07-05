@@ -6,9 +6,6 @@
 
 # seng-scroll-tracker
 
-Add a description here...
-
-
 ## Installation
 
 ### yarn / npm
@@ -64,12 +61,15 @@ targets yourself.
 ## Usage
 
 ```ts
-import SengScrollTracker from 'seng-scroll-tracker';
-// import SengScrollTracker from 'seng-scroll-tracker/lib/classname';
-
-// do something with SengScrollTracker
+import { ScrollTracker, ScrollTrackerEvent } from 'seng-scroll-tracker';
+...
+const scrollTracker = new ScrollTracker();
+const scrollTrackerPoint = scrollTracker.addPoint(100, 100);
+scrollTrackerPoint.addEventListener(ScrollTrackerEvent.ENTER_VIEW, () => {})
+scrollTrackerPoint.addEventListener(ScrollTrackerEvent.LEAVE_VIEW, () => {})
+scrollTrackerPoint.addEventListener(ScrollTrackerEvent.SCROLLED_BEYOND, () => {})
+...
 ```
-
 
 ## Documentation
 
@@ -101,7 +101,6 @@ Use one of the following main scripts:
 yarn build           # build this project
 yarn dev             # run dev-watch mode, serving example/index.html in the browser
 yarn generate        # generate all artifacts (compiles ts, webpack, docs and coverage)
-yarn typings         # install .d.ts dependencies (done on install)
 yarn test:unit       # run the unit tests
 yarn validate        # runs validation scripts, including test, lint and coverage check
 yarn lint            # run tslint on this project
