@@ -1,7 +1,7 @@
 {
   "name": "seng-scroll-tracker",
-  "version": "1.0.0",
-  "description": "Boilerplate and example project for all Seng projects",
+  "version": "0.1.0",
+  "description": "Class that keeps track of the vertical scroll position of an element.",
   "main": "index.js",
   "scripts": {
     "prepublish": "npm run build:npm",
