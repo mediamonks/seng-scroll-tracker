@@ -6,6 +6,9 @@
 
 # seng-scroll-tracker
 
+Add a description here...
+
+
 ## Installation
 
 ### yarn / npm
@@ -22,36 +25,6 @@ npm i -S seng-scroll-tracker
 
 We also have browser, amd, commonjs, umd, systemjs and es6 versions of
 this module available attached to the [Github Releases](https://github.com/mediamonks/seng-scroll-tracker/releases).
-
-<!---
-
-Note: The below cannot be used yet, as there is no way to link to a
-specific version yet without updating this readme manually after each
-new version.
-
-
-### browser
-
-```html
-<script src="http://mediamonks-development.s3.amazonaws.com/seng/libs/seng-scroll-tracker/1.2.0/seng-scroll-tracker.min.js"></script>
-```
-```js
-console.log(window.SengScrollTracker)
-```
-
-### other
-
-Besides the browser version, there are other versions available for
-download as well:
-
-- [browser](http://mediamonks-development.s3.amazonaws.com/seng/libs/seng-scroll-tracker/1.2.0/seng-scroll-tracker.js) (and [minified](http://mediamonks-development.s3.amazonaws.com/seng/libs/seng-scroll-tracker/1.2.0/seng-scroll-tracker.min.js))
-- [umd](http://mediamonks-development.s3.amazonaws.com/seng/libs/seng-scroll-tracker/1.2.0/seng-scroll-tracker.js) (and [minified](http://mediamonks-development.s3.amazonaws.com/seng/libs/seng-scroll-tracker/1.2.0/seng-scroll-tracker-umd.min.js))
-- [amd](http://mediamonks-development.s3.amazonaws.com/seng/libs/seng-scroll-tracker/1.2.0/seng-scroll-tracker-amd.js)
-- [commonjs](http://mediamonks-development.s3.amazonaws.com/seng/libs/seng-scroll-tracker/1.2.0/seng-scroll-tracker-commonjs.js)
-- [systemjs](http://mediamonks-development.s3.amazonaws.com/seng/libs/seng-scroll-tracker/1.2.0/seng-scroll-tracker-system.js)
-- [es6](http://mediamonks-development.s3.amazonaws.com/seng/libs/seng-scroll-tracker/1.2.0/seng-scroll-tracker-es6.zip)
-
--->
 
 ### manual
 
@@ -101,6 +74,7 @@ Use one of the following main scripts:
 yarn build           # build this project
 yarn dev             # run dev-watch mode, serving example/index.html in the browser
 yarn generate        # generate all artifacts (compiles ts, webpack, docs and coverage)
+yarn typings         # install .d.ts dependencies (done on install)
 yarn test:unit       # run the unit tests
 yarn validate        # runs validation scripts, including test, lint and coverage check
 yarn lint            # run tslint on this project

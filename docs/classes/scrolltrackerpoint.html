@@ -106,14 +106,14 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="scrolltrackerpoint.html#_height" class="tsd-kind-icon">_height</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="scrolltrackerpoint.html#_position" class="tsd-kind-icon">_position</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="scrolltrackerpoint.html#_side" class="tsd-kind-icon">_side</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="scrolltrackerpoint.html#_tracker" class="tsd-kind-icon">_tracker</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="scrolltrackerpoint.html#hasscrolledbeyond" class="tsd-kind-icon">has<wbr>Scrolled<wbr>Beyond</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="scrolltrackerpoint.html#isinbounds" class="tsd-kind-icon">is<wbr>InBounds</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class"><a href="scrolltrackerpoint.html#isinview" class="tsd-kind-icon">is<wbr>InView</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><a href="scrolltrackerpoint.html#parent" class="tsd-kind-icon">parent</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="scrolltrackerpoint.html#pointheight" class="tsd-kind-icon">point<wbr>Height</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="scrolltrackerpoint.html#pointside" class="tsd-kind-icon">point<wbr>Side</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="scrolltrackerpoint.html#pointtracker" class="tsd-kind-icon">point<wbr>Tracker</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="scrolltrackerpoint.html#scrollposition" class="tsd-kind-icon">scroll<wbr>Position</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
@@ -147,29 +147,29 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Scroll<wbr>Tracker<wbr>Point<span class="tsd-signature-symbol">(</span>_position<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, _height<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, _side<span class="tsd-signature-symbol">: </span><a href="../enums/side.html" class="tsd-signature-type">Side</a>, _tracker<span class="tsd-signature-symbol">: </span><a href="scrolltracker.html" class="tsd-signature-type">ScrollTracker</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="scrolltrackerpoint.html" class="tsd-signature-type">ScrollTrackerPoint</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Scroll<wbr>Tracker<wbr>Point<span class="tsd-signature-symbol">(</span>scrollPosition<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, pointHeight<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, pointSide<span class="tsd-signature-symbol">: </span><a href="../enums/side.html" class="tsd-signature-type">Side</a>, pointTracker<span class="tsd-signature-symbol">: </span><a href="scrolltracker.html" class="tsd-signature-type">ScrollTracker</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="scrolltrackerpoint.html" class="tsd-signature-type">ScrollTrackerPoint</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Overrides EventDispatcher.__constructor</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/mediamonks/seng-scroll-tracker/blob/3b71796/src/lib/ScrollTrackerPoint.ts#L22">lib/ScrollTrackerPoint.ts:22</a></li>
+									<li>Defined in <a href="https://github.com/mediamonks/seng-scroll-tracker/blob/f352121/src/lib/ScrollTrackerPoint.ts#L22">lib/ScrollTrackerPoint.ts:22</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>_position: <span class="tsd-signature-type">number</span></h5>
+									<h5>scrollPosition: <span class="tsd-signature-type">number</span></h5>
 								</li>
 								<li>
-									<h5>_height: <span class="tsd-signature-type">number</span></h5>
+									<h5>pointHeight: <span class="tsd-signature-type">number</span></h5>
 								</li>
 								<li>
-									<h5>_side: <a href="../enums/side.html" class="tsd-signature-type">Side</a></h5>
+									<h5>pointSide: <a href="../enums/side.html" class="tsd-signature-type">Side</a></h5>
 								</li>
 								<li>
-									<h5>_tracker: <a href="scrolltracker.html" class="tsd-signature-type">ScrollTracker</a></h5>
+									<h5>pointTracker: <a href="scrolltracker.html" class="tsd-signature-type">ScrollTracker</a></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="scrolltrackerpoint.html" class="tsd-signature-type">ScrollTrackerPoint</a></h4>
@@ -179,53 +179,13 @@
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
-					<a name="_height" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _height</h3>
-					<div class="tsd-signature tsd-kind-icon">_height<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/mediamonks/seng-scroll-tracker/blob/3b71796/src/lib/ScrollTrackerPoint.ts#L24">lib/ScrollTrackerPoint.ts:24</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
-					<a name="_position" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _position</h3>
-					<div class="tsd-signature tsd-kind-icon">_position<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/mediamonks/seng-scroll-tracker/blob/3b71796/src/lib/ScrollTrackerPoint.ts#L24">lib/ScrollTrackerPoint.ts:24</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
-					<a name="_side" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _side</h3>
-					<div class="tsd-signature tsd-kind-icon">_side<span class="tsd-signature-symbol">:</span> <a href="../enums/side.html" class="tsd-signature-type">Side</a></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/mediamonks/seng-scroll-tracker/blob/3b71796/src/lib/ScrollTrackerPoint.ts#L24">lib/ScrollTrackerPoint.ts:24</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
-					<a name="_tracker" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _tracker</h3>
-					<div class="tsd-signature tsd-kind-icon">_tracker<span class="tsd-signature-symbol">:</span> <a href="scrolltracker.html" class="tsd-signature-type">ScrollTracker</a></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/mediamonks/seng-scroll-tracker/blob/3b71796/src/lib/ScrollTrackerPoint.ts#L24">lib/ScrollTrackerPoint.ts:24</a></li>
-						</ul>
-					</aside>
-				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
 					<a name="hasscrolledbeyond" class="tsd-anchor"></a>
 					<h3>has<wbr>Scrolled<wbr>Beyond</h3>
 					<div class="tsd-signature tsd-kind-icon">has<wbr>Scrolled<wbr>Beyond<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> =&nbsp;false</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/mediamonks/seng-scroll-tracker/blob/3b71796/src/lib/ScrollTrackerPoint.ts#L22">lib/ScrollTrackerPoint.ts:22</a></li>
+							<li>Defined in <a href="https://github.com/mediamonks/seng-scroll-tracker/blob/f352121/src/lib/ScrollTrackerPoint.ts#L22">lib/ScrollTrackerPoint.ts:22</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -240,7 +200,7 @@
 					<div class="tsd-signature tsd-kind-icon">is<wbr>InBounds<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> =&nbsp;false</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/mediamonks/seng-scroll-tracker/blob/3b71796/src/lib/ScrollTrackerPoint.ts#L18">lib/ScrollTrackerPoint.ts:18</a></li>
+							<li>Defined in <a href="https://github.com/mediamonks/seng-scroll-tracker/blob/f352121/src/lib/ScrollTrackerPoint.ts#L18">lib/ScrollTrackerPoint.ts:18</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -256,7 +216,7 @@
 					<div class="tsd-signature tsd-kind-icon">is<wbr>InView<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> =&nbsp;false</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/mediamonks/seng-scroll-tracker/blob/3b71796/src/lib/ScrollTrackerPoint.ts#L13">lib/ScrollTrackerPoint.ts:13</a></li>
+							<li>Defined in <a href="https://github.com/mediamonks/seng-scroll-tracker/blob/f352121/src/lib/ScrollTrackerPoint.ts#L13">lib/ScrollTrackerPoint.ts:13</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -272,7 +232,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from EventDispatcher.parent</p>
 						<ul>
-							<li>Defined in /Users/lars/Projects/_private/seng-scroll-tracker/node_modules/seng-event/lib/EventDispatcher.d.ts:19</li>
+							<li>Defined in /Users/lars/Projects/_private/modules/seng-scroll-tracker/node_modules/seng-event/lib/EventDispatcher.d.ts:19</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -286,6 +246,46 @@
 							</dd>
 						</dl>
 					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="pointheight" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> point<wbr>Height</h3>
+					<div class="tsd-signature tsd-kind-icon">point<wbr>Height<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/mediamonks/seng-scroll-tracker/blob/f352121/src/lib/ScrollTrackerPoint.ts#L26">lib/ScrollTrackerPoint.ts:26</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="pointside" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> point<wbr>Side</h3>
+					<div class="tsd-signature tsd-kind-icon">point<wbr>Side<span class="tsd-signature-symbol">:</span> <a href="../enums/side.html" class="tsd-signature-type">Side</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/mediamonks/seng-scroll-tracker/blob/f352121/src/lib/ScrollTrackerPoint.ts#L27">lib/ScrollTrackerPoint.ts:27</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="pointtracker" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> point<wbr>Tracker</h3>
+					<div class="tsd-signature tsd-kind-icon">point<wbr>Tracker<span class="tsd-signature-symbol">:</span> <a href="scrolltracker.html" class="tsd-signature-type">ScrollTracker</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/mediamonks/seng-scroll-tracker/blob/f352121/src/lib/ScrollTrackerPoint.ts#L28">lib/ScrollTrackerPoint.ts:28</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="scrollposition" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> scroll<wbr>Position</h3>
+					<div class="tsd-signature tsd-kind-icon">scroll<wbr>Position<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/mediamonks/seng-scroll-tracker/blob/f352121/src/lib/ScrollTrackerPoint.ts#L25">lib/ScrollTrackerPoint.ts:25</a></li>
+						</ul>
+					</aside>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
@@ -301,7 +301,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/mediamonks/seng-scroll-tracker/blob/3b71796/src/lib/ScrollTrackerPoint.ts#L58">lib/ScrollTrackerPoint.ts:58</a></li>
+									<li>Defined in <a href="https://github.com/mediamonks/seng-scroll-tracker/blob/f352121/src/lib/ScrollTrackerPoint.ts#L63">lib/ScrollTrackerPoint.ts:63</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -318,7 +318,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/mediamonks/seng-scroll-tracker/blob/3b71796/src/lib/ScrollTrackerPoint.ts#L48">lib/ScrollTrackerPoint.ts:48</a></li>
+									<li>Defined in <a href="https://github.com/mediamonks/seng-scroll-tracker/blob/f352121/src/lib/ScrollTrackerPoint.ts#L53">lib/ScrollTrackerPoint.ts:53</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -358,7 +358,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/mediamonks/seng-scroll-tracker/blob/3b71796/src/lib/ScrollTrackerPoint.ts#L67">lib/ScrollTrackerPoint.ts:67</a></li>
+									<li>Defined in <a href="https://github.com/mediamonks/seng-scroll-tracker/blob/f352121/src/lib/ScrollTrackerPoint.ts#L72">lib/ScrollTrackerPoint.ts:72</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -375,7 +375,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/mediamonks/seng-scroll-tracker/blob/3b71796/src/lib/ScrollTrackerPoint.ts#L36">lib/ScrollTrackerPoint.ts:36</a></li>
+									<li>Defined in <a href="https://github.com/mediamonks/seng-scroll-tracker/blob/f352121/src/lib/ScrollTrackerPoint.ts#L41">lib/ScrollTrackerPoint.ts:41</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -414,7 +414,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/mediamonks/seng-scroll-tracker/blob/3b71796/src/lib/ScrollTrackerPoint.ts#L74">lib/ScrollTrackerPoint.ts:74</a></li>
+									<li>Defined in <a href="https://github.com/mediamonks/seng-scroll-tracker/blob/f352121/src/lib/ScrollTrackerPoint.ts#L79">lib/ScrollTrackerPoint.ts:79</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -438,7 +438,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from EventDispatcher.addEventListener</p>
 								<ul>
-									<li>Defined in /Users/lars/Projects/_private/seng-scroll-tracker/node_modules/seng-event/lib/EventDispatcher.d.ts:97</li>
+									<li>Defined in /Users/lars/Projects/_private/modules/seng-scroll-tracker/node_modules/seng-event/lib/EventDispatcher.d.ts:97</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -509,7 +509,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/mediamonks/seng-scroll-tracker/blob/3b71796/src/lib/ScrollTrackerPoint.ts#L83">lib/ScrollTrackerPoint.ts:83</a></li>
+									<li>Defined in <a href="https://github.com/mediamonks/seng-scroll-tracker/blob/f352121/src/lib/ScrollTrackerPoint.ts#L88">lib/ScrollTrackerPoint.ts:88</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -540,7 +540,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from EventDispatcher.dispatchEvent</p>
 								<ul>
-									<li>Defined in /Users/lars/Projects/_private/seng-scroll-tracker/node_modules/seng-event/lib/EventDispatcher.d.ts:72</li>
+									<li>Defined in /Users/lars/Projects/_private/modules/seng-scroll-tracker/node_modules/seng-event/lib/EventDispatcher.d.ts:72</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -598,7 +598,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides EventDispatcher.dispose</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/mediamonks/seng-scroll-tracker/blob/3b71796/src/lib/ScrollTrackerPoint.ts#L126">lib/ScrollTrackerPoint.ts:126</a></li>
+									<li>Defined in <a href="https://github.com/mediamonks/seng-scroll-tracker/blob/f352121/src/lib/ScrollTrackerPoint.ts#L131">lib/ScrollTrackerPoint.ts:131</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -621,7 +621,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from EventDispatcher.hasEventListener</p>
 								<ul>
-									<li>Defined in /Users/lars/Projects/_private/seng-scroll-tracker/node_modules/seng-event/lib/EventDispatcher.d.ts:108</li>
+									<li>Defined in /Users/lars/Projects/_private/modules/seng-scroll-tracker/node_modules/seng-event/lib/EventDispatcher.d.ts:108</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -669,7 +669,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from Disposable.isDisposed</p>
 								<ul>
-									<li>Defined in /Users/lars/Projects/_private/seng-scroll-tracker/node_modules/seng-disposable/lib/Disposable.d.ts:8</li>
+									<li>Defined in /Users/lars/Projects/_private/modules/seng-scroll-tracker/node_modules/seng-disposable/lib/Disposable.d.ts:8</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -693,7 +693,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from EventDispatcher.removeAllEventListeners</p>
 								<ul>
-									<li>Defined in /Users/lars/Projects/_private/seng-scroll-tracker/node_modules/seng-event/lib/EventDispatcher.d.ts:139</li>
+									<li>Defined in /Users/lars/Projects/_private/modules/seng-scroll-tracker/node_modules/seng-event/lib/EventDispatcher.d.ts:139</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -730,7 +730,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from EventDispatcher.removeEventListener</p>
 								<ul>
-									<li>Defined in /Users/lars/Projects/_private/seng-scroll-tracker/node_modules/seng-event/lib/EventDispatcher.d.ts:128</li>
+									<li>Defined in /Users/lars/Projects/_private/modules/seng-scroll-tracker/node_modules/seng-event/lib/EventDispatcher.d.ts:128</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -779,7 +779,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from EventDispatcher.willTrigger</p>
 								<ul>
-									<li>Defined in /Users/lars/Projects/_private/seng-scroll-tracker/node_modules/seng-event/lib/EventDispatcher.d.ts:115</li>
+									<li>Defined in /Users/lars/Projects/_private/modules/seng-scroll-tracker/node_modules/seng-event/lib/EventDispatcher.d.ts:115</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -834,18 +834,6 @@
 							<li class=" tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite">
 								<a href="scrolltrackerpoint.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
-								<a href="scrolltrackerpoint.html#_height" class="tsd-kind-icon">_height</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
-								<a href="scrolltrackerpoint.html#_position" class="tsd-kind-icon">_position</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
-								<a href="scrolltrackerpoint.html#_side" class="tsd-kind-icon">_side</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
-								<a href="scrolltrackerpoint.html#_tracker" class="tsd-kind-icon">_tracker</a>
-							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
 								<a href="scrolltrackerpoint.html#hasscrolledbeyond" class="tsd-kind-icon">has<wbr>Scrolled<wbr>Beyond</a>
 							</li>
@@ -857,6 +845,18 @@
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited">
 								<a href="scrolltrackerpoint.html#parent" class="tsd-kind-icon">parent</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="scrolltrackerpoint.html#pointheight" class="tsd-kind-icon">point<wbr>Height</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="scrolltrackerpoint.html#pointside" class="tsd-kind-icon">point<wbr>Side</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="scrolltrackerpoint.html#pointtracker" class="tsd-kind-icon">point<wbr>Tracker</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="scrolltrackerpoint.html#scrollposition" class="tsd-kind-icon">scroll<wbr>Position</a>
 							</li>
 							<li class=" tsd-kind-accessor tsd-parent-kind-class">
 								<a href="scrolltrackerpoint.html#height" class="tsd-kind-icon">height</a>
