@@ -1,6 +1,6 @@
 {
   "name": "seng-scroll-tracker",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "Class that keeps track of the vertical scroll position of an element.",
   "main": "index.js",
   "scripts": {
@@ -22,7 +22,7 @@
     "compile:dist:typescript:es6": "tsc -p ./ -t es6 -m es6 --outDir ./dist/es6/",
     "compile:dist:webpack": "node script/webpack.js",
     "doc": "npm-run-all -p doc:*",
-    "doc:typedoc": "typedoc --out docs/ src/ --mode file src/",
+    "doc:typedoc": "typedoc --out docs/ src/ --mode file",
     "generate": "npm-run-all clean compile test:unit doc",
     "build": "npm-run-all clean compile",
     "dev": "node script/webpack-dev.js",
@@ -57,7 +57,7 @@
   "pre-push": [
     "validate"
   ],
-  "author": "Lars van Braam <lars@mediamonks.com> (larsvanbraam)",
+  "author": "Lars van Braam <larsvanbraam@gmail.com> (larsvanbraam)",
   "homepage": "https://www.mediamonks.com/",
   "license": "MIT",
   "keywords": [
@@ -116,7 +116,7 @@
   "dependencies": {
     "element-size": "^1.1.1",
     "lodash": "^4.17.4",
-    "seng-event": "^1.1.1",
+    "seng-event": "^1.2.2",
     "tslib": "^1.2.0"
   }
 }

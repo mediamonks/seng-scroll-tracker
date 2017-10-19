@@ -21,7 +21,7 @@ describe('#ScrollTracker', () => {
 	});
 
 	it('should return the target', () => {
-		expect(scrollTracker.target).to.equal(document.body);
+		expect(scrollTracker.targetElement).to.equal(document.body);
 	});
 
 	it('should try to add a new point to the scroll tracker', () => {

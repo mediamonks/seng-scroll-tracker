@@ -1,4 +1,4 @@
-import EventDispatcher from 'seng-event';
+import sengEvent from 'seng-event';
 import Side from './enum/Side';
 import ScrollTrackerEvent from './event/ScrollTrackerEvent';
 import ScrollTracker from './ScrollTracker';
@@ -6,7 +6,7 @@ import ScrollTracker from './ScrollTracker';
 /**
  * Instance created for every coordinate that a ScrollTracker tracks.
  */
-class ScrollTrackerPoint extends EventDispatcher {
+class ScrollTrackerPoint extends sengEvent {
 	/**
 	 * Boolean indicating if the point is currently in view. Updated when checkInView() is called.
 	 */
@@ -21,7 +21,12 @@ class ScrollTrackerPoint extends EventDispatcher {
 	 */
 	public hasScrolledBeyond: boolean = false;
 
-	constructor(private _position: number, private _height: number, private _side: Side, private _tracker: ScrollTracker) {
+	constructor(
+		private scrollPosition: number,
+		private pointHeight: number,
+		private pointSide: Side,
+		private pointTracker: ScrollTracker,
+	) {
 		super();
 		this.checkInView();
 	}
@@ -34,7 +39,7 @@ class ScrollTrackerPoint extends EventDispatcher {
 	 * vertically depending on the axis of this ScrollTracker instance.
 	 */
 	public set position(position: number) {
-		this._position = position;
+		this.scrollPosition = position;
 		this.checkInView();
 	}
 
@@ -46,7 +51,7 @@ class ScrollTrackerPoint extends EventDispatcher {
 	 * vertically depending on the axis of this ScrollTracker instance.
 	 */
 	public set height(height: number) {
-		this._height = height;
+		this.pointHeight = height;
 		this.checkInView();
 	}
 
@@ -56,7 +61,7 @@ class ScrollTrackerPoint extends EventDispatcher {
 	 * vertically depending on the axis of this ScrollTracker instance.
 	 */
 	public get height(): number {
-		return this._height;
+		return this.pointHeight;
 	}
 
 	/**
@@ -65,14 +70,14 @@ class ScrollTrackerPoint extends EventDispatcher {
 	 * vertically depending on the axis of this ScrollTracker instance.
 	 */
 	public get position(): number {
-		return this._position;
+		return this.scrollPosition;
 	}
 
 	/**
 	 * @returns {Side} The side of from which the position of this point is measured.
 	 */
 	public get side(): Side {
-		return this._side;
+		return this.pointSide;
 	}
 
 	/**
@@ -81,14 +86,15 @@ class ScrollTrackerPoint extends EventDispatcher {
 	 * @return {boolean} True if this point is in view.
 	 */
 	public checkInView(scrollingBack: boolean = false): boolean {
-		// const viewStart = this._tracker.viewStart; // pageYOffset
-		const viewEnd = this._tracker.viewEnd; // pageYOffset + windowHeight
-		const scrollSize = this._tracker.scrollSize; // maxWindowSCroll
-		const positionFromStart = this._side === Side.START ? this._position : scrollSize - this._position;
+		// const viewStart = this.pointTracker.viewStart; // pageYOffset
+		const viewEnd = this.pointTracker.viewEnd; // pageYOffset + windowHeight
+		const scrollSize = this.pointTracker.scrollSize; // maxWindowSCroll
+		const positionFromStart = this.pointSide === Side.START ? this.scrollPosition : scrollSize - this.scrollPosition;
 
-		// var positionFromStart = this._side == Side.START ? this._position : scrollSize - this._position;
-		const isInView = viewEnd >= this._position && viewEnd <= this._position + this._height + window.innerHeight;
-		this.isInBounds = this._position >= 0 && this._position <= viewEnd;
+		// var positionFromStart = this.pointSide == Side.START ? this.scrollPosition : scrollSize - this.scrollPosition;
+		const isInView = viewEnd >= this.scrollPosition && 
+			viewEnd <= this.scrollPosition + this.pointHeight + window.innerHeight;
+		this.isInBounds = this.scrollPosition >= 0 && this.scrollPosition <= viewEnd;
 
 		if (!this.hasScrolledBeyond) {
 			const hasScrolledBeyond = viewEnd >= positionFromStart;
@@ -112,7 +118,6 @@ class ScrollTrackerPoint extends EventDispatcher {
 				(isInView ? scrollingBack : !scrollingBack) ? Side.START : Side.END,
 			);
 
-
 			this.dispatchEvent(event);
 			this.isInView = isInView;
 		}
@@ -124,7 +129,7 @@ class ScrollTrackerPoint extends EventDispatcher {
 	 * Disposes the ScrollTrackerPoint instance.
 	 */
 	public dispose() {
-		this._tracker = null;
+		this.pointTracker = null;
 
 		super.dispose();
 	}

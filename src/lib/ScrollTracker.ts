@@ -1,15 +1,16 @@
-import EventDispatcher from 'seng-event';
+import sengEvent from 'seng-event';
 import ScrollTrackerPoint from './ScrollTrackerPoint';
 import Axis from './enum/Axis';
 import ScrollTrackerEvent from './event/ScrollTrackerEvent';
 import Side from './enum/Side';
 import { throttle } from 'lodash';
+
 const size = require('element-size');
 
 /**
  * Class that keeps track of the vertical scroll position of an element.
  */
-export default class ScrollTracker extends EventDispatcher {
+export default class ScrollTracker extends sengEvent {
 	private static _DEFAULT_THROTTLE_SCROLL: number = 1000 / 60;
 	private static _DEFAULT_THROTTLE_RESIZE: number = 200;
 
@@ -20,9 +21,9 @@ export default class ScrollTracker extends EventDispatcher {
 	public viewStart: number = 0;
 	public viewEnd: number = 0;
 
-	private _lastScrollPosition: number = 0;
+	private lastScrollPosition: number = 0;
 
-	constructor(private _targetElement: HTMLElement | Window = window, private _axis: Axis = Axis.Y) {
+	constructor(private element: HTMLElement | Window = window, private targetAxis: Axis = Axis.Y) {
 		super();
 
 		this.initEvents();
@@ -32,29 +33,29 @@ export default class ScrollTracker extends EventDispatcher {
 	 * Returns which axis this ScrollTracker instance is tracking.
 	 */
 	public get axis(): Axis {
-		return this._axis;
+		return this.targetAxis;
 	}
 
 	/**
 	 * Returns the target element this ScrollTracker instance is tracking.
 	 */
-	public get target(): HTMLElement | Window {
-		return this._targetElement;
+	public get targetElement(): HTMLElement | Window {
+		return this.element;
 	}
 
 	/**
 	 * Updates the size of the viewport of the target element.
 	 */
 	public updateSize(): void {
-		const isX = this._axis === Axis.X;
-		const dimensions = size(this._targetElement);
+		const isX = this.axis === Axis.X;
+		const dimensions = size(this.targetElement);
 		this.viewSize = isX ? dimensions[0] : dimensions[1];
 
-		if (this._targetElement === window) {
+		if (this.targetElement === window) {
 			const dimensions = size(document.body);
 			this.scrollSize = isX ? dimensions[0] : dimensions[1];
 		} else {
-			const target = <HTMLElement> this._targetElement;
+			const target = <HTMLElement> this.targetElement;
 			this.scrollSize = isX ? target.scrollWidth : target.scrollHeight;
 		}
 	}
@@ -73,8 +74,8 @@ export default class ScrollTracker extends EventDispatcher {
 	public addPoint(position: number, height: number = 1, side: Side = Side.START): ScrollTrackerPoint {
 		const point = new ScrollTrackerPoint(position, height, side, this);
 		this.trackingPoints.push(point);
-		point.addEventListener(ScrollTrackerEvent.ENTER_VIEW, this._pointEventHandler);
-		point.addEventListener(ScrollTrackerEvent.LEAVE_VIEW, this._pointEventHandler);
+		point.addEventListener(ScrollTrackerEvent.ENTER_VIEW, this.pointEventHandler);
+		point.addEventListener(ScrollTrackerEvent.LEAVE_VIEW, this.pointEventHandler);
 
 		return point;
 	}
@@ -101,7 +102,7 @@ export default class ScrollTracker extends EventDispatcher {
 	 * no longer throw events.
 	 */
 	public removeAllPoints(): void {
-		for (let i = 0; i < this.trackingPoints.length; i++) {
+		for (let i = 0; i < this.trackingPoints.length; i += 1) {
 			this.trackingPoints[i].dispose();
 		}
 		this.trackingPoints.length = 0;
@@ -113,23 +114,23 @@ export default class ScrollTracker extends EventDispatcher {
 	 * to be called manually to update the view size.
 	 */
 	private initEvents(): void {
-		if (this._targetElement === window) {
+		if (this.targetElement === window) {
 			window.addEventListener(
 				'resize',
-				throttle(this._windowResizeHandler, ScrollTracker._DEFAULT_THROTTLE_RESIZE),
+				throttle(this.windowResizeHandler, ScrollTracker._DEFAULT_THROTTLE_RESIZE),
 			);
 
-			this._windowResizeHandler();
+			this.windowResizeHandler();
 		} else {
 			this.updateSize();
 		}
 
-		this._targetElement.addEventListener(
+		this.targetElement.addEventListener(
 			'scroll',
-			throttle(this._scrollHandler, ScrollTracker._DEFAULT_THROTTLE_SCROLL),
+			throttle(this.scrollHandler, ScrollTracker._DEFAULT_THROTTLE_SCROLL),
 		);
 
-		this._scrollHandler();
+		this.scrollHandler();
 	}
 
 	/**
@@ -137,7 +138,7 @@ export default class ScrollTracker extends EventDispatcher {
 	 * ScrollTracker instance.
 	 * @param event The event thrown.
 	 */
-	private _pointEventHandler = (event: ScrollTrackerEvent) => {
+	private pointEventHandler = (event: ScrollTrackerEvent) => {
 		this.dispatchEvent(event);
 	}
 
@@ -145,21 +146,21 @@ export default class ScrollTracker extends EventDispatcher {
 	 * Event handler called when the target element is scrolled. Will detect the new scroll
 	 * position and call checkInView() on all tracking points.
 	 */
-	private _scrollHandler = () => {
-		const isX = this._axis === Axis.X;
-		if (this._targetElement === window) {
+	private scrollHandler = () => {
+		const isX = this.axis === Axis.X;
+		if (this.targetElement === window) {
 			this.viewStart = isX ? window.pageXOffset : window.pageYOffset;
 		} else {
-			const target = <HTMLElement> this._targetElement;
+			const target = <HTMLElement> this.targetElement;
 			this.viewStart = isX ? target.scrollLeft : target.scrollTop;
 		}
 
 		this.viewEnd = this.viewStart + this.viewSize;
 
-		const scrollingBack = this.viewStart < this._lastScrollPosition;
-		this._lastScrollPosition = this.viewStart;
+		const scrollingBack = this.viewStart < this.lastScrollPosition;
+		this.lastScrollPosition = this.viewStart;
 
-		for (let i = 0; i < this.trackingPoints.length; i++) {
+		for (let i = 0; i < this.trackingPoints.length; i += 1) {
 			this.trackingPoints[i].checkInView(scrollingBack);
 		}
 	}
@@ -168,7 +169,7 @@ export default class ScrollTracker extends EventDispatcher {
 	 * Event handler called when the window resizes. Only used when the target of this ScrollTracker
 	 * instance is the window object.
 	 */
-	private _windowResizeHandler = () => {
+	private windowResizeHandler = () => {
 		this.updateSize();
 	}
 
@@ -176,8 +177,8 @@ export default class ScrollTracker extends EventDispatcher {
 	 * Disposes this ScrollTracker and all points created on it. Removes all event handlers.
 	 */
 	public dispose(): void {
-		window.removeEventListener('resize', this._windowResizeHandler);
-		this._targetElement.removeEventListener('scroll', this._scrollHandler);
+		window.removeEventListener('resize', this.windowResizeHandler);
+		this.targetElement.removeEventListener('scroll', this.scrollHandler);
 
 		this.removeAllPoints();
 		super.dispose();

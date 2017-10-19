@@ -5,7 +5,7 @@
     "no-debugger": 2,
     "no-console": 1,
     "prefer-array-literal": [ true, { "allow-type-parameters": true } ],
-    "variable-name": [ true, "allow-pascal-case", "allow-leading-underscore" ],
+    "variable-name": [ true, "allow-pascal-case" ],
     "indent": [true, "tabs"],
     "ter-indent": [
       true,
@@ -14,8 +14,6 @@
         "SwitchCase": 1
       }
     ],
-    "max-line-length": [true, 120],
-    "import-name": false,
-    "no-increment-decrement": false
+    "max-line-length": [true, 120]
   }
 }
