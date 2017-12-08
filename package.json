@@ -1,6 +1,6 @@
 {
   "name": "seng-scroll-tracker",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Class that keeps track of the vertical scroll position of an element.",
   "main": "index.js",
   "scripts": {
@@ -102,7 +102,6 @@
     "pre-push": "^0.1.1",
     "remap-istanbul": "^0.6.4",
     "shx": "^0.1.2",
-    "ts-helpers": "^1.1.1",
     "tslint": "^5.3.2",
     "tslint-config-airbnb": "^5.0.1",
     "tsutils": "^2.1.0",
@@ -116,7 +115,7 @@
   "dependencies": {
     "element-size": "^1.1.1",
     "lodash": "^4.17.4",
-    "seng-event": "^1.2.2",
+    "seng-event": "^1.2.3",
     "tslib": "^1.2.0"
   }
 }
