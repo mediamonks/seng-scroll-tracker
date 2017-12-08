@@ -3,8 +3,8 @@ import ScrollTrackerPoint from './ScrollTrackerPoint';
 import Axis from './enum/Axis';
 import ScrollTrackerEvent from './event/ScrollTrackerEvent';
 import Side from './enum/Side';
-import { throttle } from 'lodash';
 
+const throttle = require('lodash/throttle');
 const size = require('element-size');
 
 /**
