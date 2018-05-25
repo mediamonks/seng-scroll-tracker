@@ -92,7 +92,7 @@ class ScrollTrackerPoint extends sengEvent {
 		const positionFromStart = this.pointSide === Side.START ? this.scrollPosition : scrollSize - this.scrollPosition;
 
 		// var positionFromStart = this.pointSide == Side.START ? this.scrollPosition : scrollSize - this.scrollPosition;
-		const isInView = viewEnd >= this.scrollPosition && 
+		const isInView = viewEnd >= this.scrollPosition &&
 			viewEnd <= this.scrollPosition + this.pointHeight + window.innerHeight;
 		this.isInBounds = this.scrollPosition >= 0 && this.scrollPosition <= viewEnd;
 
@@ -118,8 +118,8 @@ class ScrollTrackerPoint extends sengEvent {
 				(isInView ? scrollingBack : !scrollingBack) ? Side.START : Side.END,
 			);
 
-			this.dispatchEvent(event);
 			this.isInView = isInView;
+			this.dispatchEvent(event);
 		}
 
 		return this.isInView;
