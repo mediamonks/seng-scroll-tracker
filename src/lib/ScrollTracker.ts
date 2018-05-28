@@ -26,7 +26,10 @@ export default class ScrollTracker extends sengEvent {
 	constructor(private element: HTMLElement | Window = window, private targetAxis: Axis = Axis.Y) {
 		super();
 
-		this.initEvents();
+		setTimeout(() => {
+			this.updateSize();
+			this.initEvents();
+		}, 0);
 	}
 
 	/**
@@ -58,6 +61,8 @@ export default class ScrollTracker extends sengEvent {
 			const target = <HTMLElement> this.targetElement;
 			this.scrollSize = isX ? target.scrollWidth : target.scrollHeight;
 		}
+
+		this.updateScrollPosition();
 	}
 
 	/**
@@ -129,8 +134,6 @@ export default class ScrollTracker extends sengEvent {
 			'scroll',
 			throttle(this.scrollHandler, ScrollTracker._DEFAULT_THROTTLE_SCROLL),
 		);
-
-		this.scrollHandler();
 	}
 
 	/**
@@ -140,13 +143,9 @@ export default class ScrollTracker extends sengEvent {
 	 */
 	private pointEventHandler = (event: ScrollTrackerEvent) => {
 		this.dispatchEvent(event);
-	}
+	};
 
-	/**
-	 * Event handler called when the target element is scrolled. Will detect the new scroll
-	 * position and call checkInView() on all tracking points.
-	 */
-	private scrollHandler = () => {
+	private updateScrollPosition() {
 		const isX = this.axis === Axis.X;
 		if (this.targetElement === window) {
 			this.viewStart = isX ? window.pageXOffset : window.pageYOffset;
@@ -157,13 +156,21 @@ export default class ScrollTracker extends sengEvent {
 
 		this.viewEnd = this.viewStart + this.viewSize;
 
-		const scrollingBack = this.viewStart < this.lastScrollPosition;
 		this.lastScrollPosition = this.viewStart;
+	}
+
+	/**
+	 * Event handler called when the target element is scrolled. Will detect the new scroll
+	 * position and call checkInView() on all tracking points.
+	 */
+	private scrollHandler = () => {
+		this.updateScrollPosition();
+		const scrollingBack = this.viewStart < this.lastScrollPosition;
 
 		for (let i = 0; i < this.trackingPoints.length; i += 1) {
 			this.trackingPoints[i].checkInView(scrollingBack);
 		}
-	}
+	};
 
 	/**
 	 * Event handler called when the window resizes. Only used when the target of this ScrollTracker
@@ -171,7 +178,7 @@ export default class ScrollTracker extends sengEvent {
 	 */
 	private windowResizeHandler = () => {
 		this.updateSize();
-	}
+	};
 
 	/**
 	 * Disposes this ScrollTracker and all points created on it. Removes all event handlers.

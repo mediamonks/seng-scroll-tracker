@@ -25,10 +25,13 @@ class ScrollTrackerPoint extends sengEvent {
 		private scrollPosition: number,
 		private pointHeight: number,
 		private pointSide: Side,
-		private pointTracker: ScrollTracker,
-	) {
+		private pointTracker: ScrollTracker) {
 		super();
-		this.checkInView();
+
+		setTimeout(() => {
+			this.checkScrollBeyond();
+			this.isInView = this.getInViewValue();
+		}, 0);
 	}
 
 	/**
@@ -80,46 +83,49 @@ class ScrollTrackerPoint extends sengEvent {
 		return this.pointSide;
 	}
 
+	private getInViewValue(): boolean {
+		const viewEnd = this.pointTracker.viewEnd; // pageYOffset + windowHeight
+
+		return viewEnd >= this.scrollPosition &&
+			viewEnd <= this.scrollPosition + this.pointHeight + window.innerHeight;
+	}
+
+	private checkScrollBeyond() {
+		const positionFromStart = this.pointSide === Side.START ?
+			this.scrollPosition : this.pointTracker.scrollSize - this.scrollPosition;
+
+		if (!this.hasScrolledBeyond) {
+			const hasScrolledBeyond = this.pointTracker.viewEnd >= positionFromStart;
+			if (hasScrolledBeyond) {
+				this.hasScrolledBeyond = true;
+			}
+		}
+	}
+
 	/**
 	 * Checks if this point is in view using it's position and the current scroll position saved on
 	 * the ScrollTracker. Updates the isInView property accordingly.
 	 * @return {boolean} True if this point is in view.
 	 */
 	public checkInView(scrollingBack: boolean = false): boolean {
-		// const viewStart = this.pointTracker.viewStart; // pageYOffset
-		const viewEnd = this.pointTracker.viewEnd; // pageYOffset + windowHeight
-		const scrollSize = this.pointTracker.scrollSize; // maxWindowSCroll
-		const positionFromStart = this.pointSide === Side.START ? this.scrollPosition : scrollSize - this.scrollPosition;
-
-		// var positionFromStart = this.pointSide == Side.START ? this.scrollPosition : scrollSize - this.scrollPosition;
-		const isInView = viewEnd >= this.scrollPosition &&
-			viewEnd <= this.scrollPosition + this.pointHeight + window.innerHeight;
-		this.isInBounds = this.scrollPosition >= 0 && this.scrollPosition <= viewEnd;
-
-		if (!this.hasScrolledBeyond) {
-			const hasScrolledBeyond = viewEnd >= positionFromStart;
-			if (hasScrolledBeyond) {
-				this.hasScrolledBeyond = true;
-				this.dispatchEvent(new ScrollTrackerEvent(
-					ScrollTrackerEvent.SCROLLED_BEYOND,
-					this,
-					Side.END,
-				));
-			}
-		}
+		const isInView = this.getInViewValue();
+		this.isInBounds = this.scrollPosition >= 0 && this.scrollPosition <= this.pointTracker.viewEnd;
+		const positionFromStart = this.pointSide === Side.START ?
+			this.scrollPosition : this.pointTracker.scrollSize - this.scrollPosition;
 
 		if (this.isInView !== isInView) {
+			this.isInView = isInView;
+
 			const eventType = isInView ?
 				ScrollTrackerEvent.ENTER_VIEW : ScrollTrackerEvent.LEAVE_VIEW;
-
 			const event = new ScrollTrackerEvent(
-				eventType,
-				this,
-				(isInView ? scrollingBack : !scrollingBack) ? Side.START : Side.END,
-			);
-
-			this.isInView = isInView;
+				eventType, this, (isInView ? scrollingBack : !scrollingBack) ? Side.START : Side.END);
 			this.dispatchEvent(event);
+		}
+
+		if (!this.hasScrolledBeyond && this.pointTracker.viewEnd >= positionFromStart && !isInView) {
+			this.hasScrolledBeyond = true;
+			this.dispatchEvent(new ScrollTrackerEvent(ScrollTrackerEvent.SCROLLED_BEYOND, this, Side.END));
 		}
 
 		return this.isInView;
