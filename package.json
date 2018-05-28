@@ -1,6 +1,6 @@
 {
   "name": "seng-scroll-tracker",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Class that keeps track of the vertical scroll position of an element.",
   "main": "index.js",
   "scripts": {
