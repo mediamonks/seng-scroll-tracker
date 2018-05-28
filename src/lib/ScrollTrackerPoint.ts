@@ -28,10 +28,13 @@ class ScrollTrackerPoint extends sengEvent {
 		private pointTracker: ScrollTracker) {
 		super();
 
-		setTimeout(() => {
-			this.checkScrollBeyond();
-			this.isInView = this.getInViewValue();
-		}, 0);
+		setTimeout(
+			() => {
+				this.checkScrollBeyond();
+				this.isInView = this.getInViewValue();
+			},
+			0,
+		);
 	}
 
 	/**
