@@ -1,6 +1,6 @@
 language: node_js
 
-dist: precise
+cache: yarn
 
 node_js:
   - 'stable'
@@ -10,19 +10,10 @@ node_js:
 sudo: false
 
 before_install:
-  - if [[ `npm -v` != 3* ]]; then npm i -g npm@3; fi
-  - npm install -g codeclimate-test-reporter
+  - yarn global add codeclimate-test-reporter
 
 script:
-  - npm run build
-  - npm run validate
-
-after_script:
-  - codeclimate-test-reporter < coverage/lcov.info
-  - node_modules/.bin/coveralls < coverage/lcov.info
-
-before_deploy:
-  - npm run build:dist && node ./script/package-dist.js
+  - yarn test
 
 deploy:
   - provider: npm
@@ -30,22 +21,7 @@ deploy:
     api_key: $NPM_TOKEN
     on:
       tags: true
-      node: 'stable'
+      node: '8'
     skip_cleanup: true
 
-  - provider: releases
-    api_key:
-      secure: 'eJGaL9+cP7MxbVvRMk01kZ9dHsYD0Gn405YTB2da5zK42lnKWUlXiAV2AT6RvjcVbzIt6Ei/UgsKgWUrAJbQUp5r3IBvMKWstPItdQUrkobKXm0dMhkBz82nGLezt1h1T9ndwFw51xID1RrcpCf8Y+gAHXoe7fSy6fs3yzJj/J7/NBA20fo0ZtXFAB3cQ+VKVzTFsZwB/h36g35QGB+cOUK5B36T2TeegOygFZGFWvIiDJrsc2RHRL14/ruX19AizMkSvzZ+hS6HhiXvpIOUoI6NzIpOKOKMn0Kp1YGrQo0NN2aZ+XL9bPIebqNEDstotoekOlvfuFkdZAK6uJ5PgM0mc8y+QqUYM3Xo72Rh0aT64TDJ++CaB0odilrtkD0y1y2RB9+mIAb7lrmf0YptNbuAvxMw+xRf/4PM/fXwu7HoBaqnyyd77WIpjbBVBF/2c761K3WkgyW4wQ/GUk9JE01teUff4AFAzZE/om8t5c3M9em8e3rqDPKXJSQsvjH3+6joxKZ+byaPrexV8NaPU7ueXx+KOaC6QHV7QLmj9n4kmRi5HkKquFgDevYjs6ts1NFzFTPREONqNozBf/EllT3AyBYOUsUhxpckar7Osyne4bi0FwUtzVLF19AtWXYDhDcohgQ39u7r2Fh3QpE7jUpgeTPpyZTyuA2J7ZqhtiM='
-    file:
-      - "seng-*.zip"
-      - "seng-*.tar.gz"
-    file_glob: true
-    on:
-      tags: true
-      node: 'stable'
-    skip_cleanup: true
 
-addons:
-  code_climate:
-    repo_token:
-      secure: 'hw0yk7WHvanKSnMgI/qPqfmTwvx+Rjmxsq6SzwskqUqyJmZNIDBriVx1ECCXxyw5De+29hxBk9rhLi8fW6YPYQS7UOPYKmepLcmZKoJrheito8wIUCl9dUT3UVFeHeejlXVDwruCERfEBo49gmRxj04pjH6F0lyor9OLXMQJCxrLPnz9s7j8rSoF5QjdqsGUm+l8tBdnSTG60CHLHACtW1FZ7rKrUNoIgeGhwWvHVlWL6vXSsqE/mD8P/E1vGnhuRP3FX4zNntJ+20vVCvOdleY4q1uDQIYh3bwaIRAz+qubyZL71lJSTvZt2r6nVdA7goc+/OZ/aiSTIeAI+co1kSva38bxN8ynoVDKy64xR/fJ9PeWGIp0Om2N/+bfGek4ea/PiosbxSQSSdFetS6EilwU1NuckC7pNCimoSDR42+YQzSn6/7mPnd3QdwYy8eYYB+yk3TK1Dt/86K6oP9/EqYQYVxqwxwiIjITVUb2AnKNfr90c4h6u66ZvADkapcEQ1JmjvRxc9zOMXJhEjc7EJJH7Lg+iontTiEa89Rgl7mZJQ8wsoYviGpetk3DTjfp2FQ8uWLWAOzbu17pnQxtE+6i8esTCAB+JYcLiUYWomNCD9Xs0ihpElaJ3x+25Ehct/zUUSRM2iq+tSmX695UrjqQ5De3X5g4uEGxtlg490o='
