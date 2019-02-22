@@ -21,7 +21,7 @@ export default class ScrollTracker extends sengEvent {
 	public viewStart: number = 0;
 	public viewEnd: number = 0;
 
-	private lastScrollPosition: number = 0;
+	protected lastScrollPosition: number = 0;
 
 	constructor(private element: HTMLElement | Window = window, private targetAxis: Axis = Axis.Y) {
 		super();
@@ -121,7 +121,7 @@ export default class ScrollTracker extends sengEvent {
 	 * the target of ScrollTracker is 'window'. If the target is not window, updateSize() has
 	 * to be called manually to update the view size.
 	 */
-	private initEvents(): void {
+	protected initEvents(): void {
 		if (this.targetElement === window) {
 			window.addEventListener(
 				'resize',
@@ -148,7 +148,7 @@ export default class ScrollTracker extends sengEvent {
 		this.dispatchEvent(event);
 	}
 
-	private updateScrollPosition() {
+	protected updateScrollPosition() {
 		const isX = this.axis === Axis.X;
 		if (this.targetElement === window) {
 			this.viewStart = isX ? window.pageXOffset : window.pageYOffset;
@@ -166,7 +166,7 @@ export default class ScrollTracker extends sengEvent {
 	 * Event handler called when the target element is scrolled. Will detect the new scroll
 	 * position and call checkInView() on all tracking points.
 	 */
-	private scrollHandler = () => {
+	protected scrollHandler = () => {
 		this.updateScrollPosition();
 		const scrollingBack = this.viewStart < this.lastScrollPosition;
 
@@ -179,7 +179,7 @@ export default class ScrollTracker extends sengEvent {
 	 * Event handler called when the window resizes. Only used when the target of this ScrollTracker
 	 * instance is the window object.
 	 */
-	private windowResizeHandler = () => {
+	protected windowResizeHandler = () => {
 		this.updateSize();
 	}
 
