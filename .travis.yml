@@ -4,8 +4,8 @@ dist: precise
 
 node_js:
   - 'stable'
-  - '4'
-  - '5'
+  - '6'
+  - '8'
 
 sudo: false
 
@@ -27,8 +27,7 @@ before_deploy:
 deploy:
   - provider: npm
     email: 'devmonk@mediamonks.com'
-    api_key:
-      secure: 'ylyExjLfQmur8ORsQo17oQvgnlBzue8W1rZhqndBHMU6IEprh3HoF1pIhBvylw6k6aMgWRn+GjGz50RcZ756kkuZxZlofthLNRF6gMKvN7aX+2SH/AUuC9UPqx4gH2MjIJwKL4SSC5HcYoujiVvAlosGd5mQ4v6gMW2vCgavdF4vIbTVokTogKgWHFUSP7zwuM30sFNtUyyB9i8vgJPepzRFSvMKRGUIIpEnN2pkA6E5sx1DgNg+0QLOf5/KCUOfFeHQ+Ly2ojCUWLhPVwfq49LxPEPObIhxFi6OmaZ4iPRjbDSTxMsE+TSAvObgDfkejaotfAsI+nUemgrwQ/tSc702i2xptSFBhWD6xAxvrVaPUVPC6Ddb2vM5Tfb1+q/AsmNiaiGcZh6TcERHi2ytNaYPo0sDDDVq9Xb7DT0TcDFA3Xaah/evEA5uYtDsoM+8ExyW71MUzEhvJHIL4qqXrr5S6rbumMaheiLv+bNj4BM8M9odKaVvKZw2K0YUB5aaEWLEEvzeQQzX5Fp6uvPOHDbKuHCRAs66vz/pzUwK2s5NZ1SruyBo1jXzmlbWr92+yH0iPq6zBmhA+SfElcfMwCmN9i4ZgmsAgQREavnCIli/+XJ2Ur8mb3jcnsPVh4yiND+3iCwa+KhTxRAIoSvb5KU3abV0TWAFAt/lhoc8Hp4'
+    api_key: $NPM_TOKEN
     on:
       tags: true
       node: 'stable'
