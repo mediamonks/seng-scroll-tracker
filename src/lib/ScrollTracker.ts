@@ -28,6 +28,10 @@ export default class ScrollTracker extends sengEvent {
 
 		setTimeout(
 			() => {
+				if (this.isDisposed()) {
+					return;
+				}
+
 				this.updateSize();
 				this.initEvents();
 			},
@@ -61,7 +65,7 @@ export default class ScrollTracker extends sengEvent {
 			const dimensions = size(document.body);
 			this.scrollSize = isX ? dimensions[0] : dimensions[1];
 		} else {
-			const target = <HTMLElement> this.targetElement;
+			const target = <HTMLElement>this.targetElement;
 			this.scrollSize = isX ? target.scrollWidth : target.scrollHeight;
 		}
 
@@ -146,14 +150,14 @@ export default class ScrollTracker extends sengEvent {
 	 */
 	private pointEventHandler = (event: ScrollTrackerEvent) => {
 		this.dispatchEvent(event);
-	}
+	};
 
 	protected updateScrollPosition() {
 		const isX = this.axis === Axis.X;
 		if (this.targetElement === window) {
 			this.viewStart = isX ? window.pageXOffset : window.pageYOffset;
 		} else {
-			const target = <HTMLElement> this.targetElement;
+			const target = <HTMLElement>this.targetElement;
 			this.viewStart = isX ? target.scrollLeft : target.scrollTop;
 		}
 
@@ -173,7 +177,7 @@ export default class ScrollTracker extends sengEvent {
 		for (let i = 0; i < this.trackingPoints.length; i += 1) {
 			this.trackingPoints[i].checkInView(scrollingBack);
 		}
-	}
+	};
 
 	/**
 	 * Event handler called when the window resizes. Only used when the target of this ScrollTracker
@@ -181,7 +185,7 @@ export default class ScrollTracker extends sengEvent {
 	 */
 	protected windowResizeHandler = () => {
 		this.updateSize();
-	}
+	};
 
 	/**
 	 * Disposes this ScrollTracker and all points created on it. Removes all event handlers.

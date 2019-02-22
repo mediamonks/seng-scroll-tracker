@@ -30,6 +30,10 @@ class ScrollTrackerPoint extends sengEvent {
 
 		setTimeout(
 			() => {
+				if (this.isDisposed()) {
+					return;
+				}
+
 				this.checkScrollBeyond();
 				this.isInView = this.getInViewValue();
 			},
