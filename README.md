@@ -34,7 +34,7 @@ targets yourself.
 ## Usage
 
 ```ts
-import { ScrollTracker, ScrollTrackerEvent } from 'seng-scroll-tracker';
+import ScrollTracker, { ScrollTrackerEvent } from 'seng-scroll-tracker';
 ...
 const scrollTracker = new ScrollTracker();
 const scrollTrackerPoint = scrollTracker.addPoint(100, 100);
