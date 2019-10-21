@@ -1,4 +1,4 @@
-import sengEvent from 'seng-event';
+import EventDispatcher from 'seng-event';
 import Side from './enum/Side';
 import ScrollTrackerEvent from './event/ScrollTrackerEvent';
 import ScrollTracker from './ScrollTracker';
@@ -6,7 +6,7 @@ import ScrollTracker from './ScrollTracker';
 /**
  * Instance created for every coordinate that a ScrollTracker tracks.
  */
-class ScrollTrackerPoint extends sengEvent {
+class ScrollTrackerPoint extends EventDispatcher {
 	/**
 	 * Boolean indicating if the point is currently in view. Updated when checkInView() is called.
 	 */
@@ -124,7 +124,7 @@ class ScrollTrackerPoint extends sengEvent {
 			this.isInView = isInView;
 
 			const eventType = isInView ?
-				ScrollTrackerEvent.ENTER_VIEW : ScrollTrackerEvent.LEAVE_VIEW;
+				ScrollTrackerEvent.types.ENTER_VIEW : ScrollTrackerEvent.types.LEAVE_VIEW;
 			const event = new ScrollTrackerEvent(
 				eventType, this, (isInView ? scrollingBack : !scrollingBack) ? Side.START : Side.END);
 			this.dispatchEvent(event);
@@ -132,7 +132,7 @@ class ScrollTrackerPoint extends sengEvent {
 
 		if (!this.hasScrolledBeyond && this.pointTracker.viewEnd >= positionFromStart && !isInView) {
 			this.hasScrolledBeyond = true;
-			this.dispatchEvent(new ScrollTrackerEvent(ScrollTrackerEvent.SCROLLED_BEYOND, this, Side.END));
+			this.dispatchEvent(new ScrollTrackerEvent(ScrollTrackerEvent.types.SCROLLED_BEYOND, this, Side.END));
 		}
 
 		return this.isInView;
