@@ -86,8 +86,8 @@ export default class ScrollTracker extends sengEvent {
 	public addPoint(position: number, height: number = 1, side: Side = Side.START): ScrollTrackerPoint {
 		const point = new ScrollTrackerPoint(position, height, side, this);
 		this.trackingPoints.push(point);
-		point.addEventListener(ScrollTrackerEvent.ENTER_VIEW, this.pointEventHandler);
-		point.addEventListener(ScrollTrackerEvent.LEAVE_VIEW, this.pointEventHandler);
+		point.addEventListener(ScrollTrackerEvent.types.ENTER_VIEW, this.pointEventHandler);
+		point.addEventListener(ScrollTrackerEvent.types.LEAVE_VIEW, this.pointEventHandler);
 
 		return point;
 	}
