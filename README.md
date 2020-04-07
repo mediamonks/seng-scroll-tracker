@@ -38,9 +38,9 @@ import ScrollTracker, { ScrollTrackerEvent } from 'seng-scroll-tracker';
 ...
 const scrollTracker = new ScrollTracker();
 const scrollTrackerPoint = scrollTracker.addPoint(100, 100);
-scrollTrackerPoint.addEventListener(ScrollTrackerEvent.ENTER_VIEW, () => {})
-scrollTrackerPoint.addEventListener(ScrollTrackerEvent.LEAVE_VIEW, () => {})
-scrollTrackerPoint.addEventListener(ScrollTrackerEvent.SCROLLED_BEYOND, () => {})
+scrollTrackerPoint.addEventListener(ScrollTrackerEvent.types.ENTER_VIEW, () => {})
+scrollTrackerPoint.addEventListener(ScrollTrackerEvent.types.LEAVE_VIEW, () => {})
+scrollTrackerPoint.addEventListener(ScrollTrackerEvent.types.SCROLLED_BEYOND, () => {})
 ...
 ```
 
